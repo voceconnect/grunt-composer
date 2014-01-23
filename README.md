@@ -1,5 +1,5 @@
-grunt-composer
-==============
+# grunt-composer [![Build Status](https://travis-ci.org/voceconnect/grunt-composer.png?branch=master)](https://travis-ci.org/voceconnect/grunt-composer)
+
 
 > A Grunt task wrapper for composer to allow custom tasks to be configured to run composer as needed.
 
