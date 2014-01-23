@@ -1,10 +1,16 @@
-language: node_js
+language: php
+
+php:
+  - 5.3
+
 node_js:
   - "0.8"
   - "0.10"
-php:
-  - 5.3
+
+
 before_install:
   - npm install -g grunt-cli
-  - curl -sS https://getcomposer.org/installer | php
-  - mv composer.phar /usr/local/bin/composer
+  - npm install
+
+script:
+  - npm test
