@@ -4,3 +4,5 @@ node_js:
   - "0.10"
 before_install:
   - npm install -g grunt-cli
+  - curl -sS https://getcomposer.org/installer | php
+  - mv composer.phar /usr/local/bin/composer
