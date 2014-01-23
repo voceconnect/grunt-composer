@@ -8,10 +8,9 @@ function getNormalizedFile(filepath) {
 
 exports.composer = {
 	install_test: function(test) {
-		test.expect(2);
+		test.expect(1);
 
-		test.ok(grunt.file.exists('test/tmp/voce/grunt-composer-test/composer.json'), 'should have created composer.json file');
-		test.ok(grunt.file.exists('test/tmp/voce/grunt-composer-test/foo.php'), 'should have created foo.php file');
+		test.ok(grunt.file.exists('test/tmp/autoload.php'), 'should have created composer.json file');
 		test.done();
 	}
 }
