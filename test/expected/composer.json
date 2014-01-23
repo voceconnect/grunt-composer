@@ -1,0 +1,11 @@
+{
+    "name": "voce/grunt-composer-test",
+    "description": "Tests repo",
+    "version": "0.1.0",
+    "authors": [
+        {
+            "name": "Michael Pretty",
+            "email": "mpretty@voceconnect.com"
+        }
+    ]
+}

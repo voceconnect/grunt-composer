@@ -1,6 +1,6 @@
 {
   "name": "grunt-composer",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A grunt wrapper for composer",
   "scripts": {
     "test": "grunt test"
@@ -36,7 +36,15 @@
   "peerDependencies": {
     "grunt": "~0.4.0"
   },
+  "devDependencies": {
+    "grunt-contrib-nodeunit": "~0.1.2",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt": "~0.4.0"
+  },
   "files": [
     "tasks/composer.coffee"
-  ]
+  ],
+  "scripts": {
+    "test": "grunt test"
+  }
 }
