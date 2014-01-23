@@ -20,13 +20,22 @@ module.exports = function(grunt) {
     },
     coffeelint: {
       app: ['tasks/*.coffee']
+    },
+    clean: {
+      tests: ['test/tmp', 'test/composer.lock']
+    },
+    nodeunit: {
+      tests: ['test/*_test.js']
     }
   });
 
   grunt.loadTasks('tasks');
 
   grunt.loadNpmTasks('grunt-coffeelint');
+  grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-nodeunit');
 
   grunt.registerTask('default', ['coffeelint']);
+  grunt.registerTask('test', ['clean', 'composer:install:working-dir=test/', 'nodeunit']);
 
 };

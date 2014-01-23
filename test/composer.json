@@ -1,0 +1,22 @@
+{
+    "name": "voce/grunt-composer",
+    "description": "Tests for grunt-composer",
+    "authors": [
+        {
+            "name": "Michael Pretty",
+            "email": "mpretty@voceconnect.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "artifact",
+            "url": "fixtures"
+        }
+    ],
+    "require": {
+        "voce/grunt-composer-test": "0.1.0"
+    },
+    "config": {
+        "vendor-dir": "tmp"
+    }
+}
