@@ -7,15 +7,6 @@
             "email": "mpretty@voceconnect.com"
         }
     ],
-    "repositories": [
-        {
-            "type": "artifact",
-            "url": "fixtures"
-        }
-    ],
-    "require": {
-        "voce/grunt-composer-test": "0.1.0"
-    },
     "config": {
         "vendor-dir": "tmp"
     }
