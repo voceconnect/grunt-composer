@@ -7,9 +7,9 @@ composer
 module.exports = (grunt) ->
   spawn = require('child_process').spawn
 
-  execCmd = (cmd, args, cb) ->
+  execCmd = (cmd, args, cb, spawnOpts) ->
 
-    exec = spawn cmd, args
+    exec = spawn cmd, args, spawnOpts
     exec.stdout.on 'data', grunt.log.write
     exec.stderr.on 'data', grunt.log.error
     exec.on 'close', (code) ->
@@ -20,7 +20,12 @@ module.exports = (grunt) ->
 
   desc = 'Wrapper for Composer commands'
   grunt.registerTask 'composer', desc, (cmd, args...) ->
+    options = this.options()
+    spawnOpts = {}
+    if options.cwd
+      spawnOpts.cwd = options.cwd
+
     done = this.async()
     cmdArgs = ('--' + arg for arg in args)
     cmdArgs.unshift cmd
-    execCmd 'composer', cmdArgs, done
+    execCmd 'composer', cmdArgs, done, spawnOpts
