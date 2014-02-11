@@ -17,6 +17,14 @@ Loading the plugin via JavaScript:
 grunt.loadNpmTasks('grunt-composer');
 ```
 
+### Options
+
+#### options.cwd
+Type: `String`
+Default value: `.`
+
+The directory in which to execute the composer command.
+
 
 ## Running Composer Commands
 
