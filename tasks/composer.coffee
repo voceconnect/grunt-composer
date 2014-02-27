@@ -24,6 +24,8 @@ module.exports = (grunt) ->
     execOpts = {}
     if options.cwd
       execOpts.cwd = options.cwd
+    if options.maxBuffer
+      execOpts.maxBuffer = options.maxBuffer
 
     done = this.async()
     cmd += ' --' + arg for arg in args
