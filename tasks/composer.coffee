@@ -22,9 +22,22 @@ module.exports = (grunt) ->
   grunt.registerTask 'composer', desc, (cmd, args...) ->
     options = this.options()
     execOpts = {}
+
     composerBin = options.composerLocation
-    if !composerLocation
+    if !composerBin
       composerBin = 'composer'
+
+    execBin = ''
+    phpArgs = ''
+
+    if options.phpOptions
+      for key, value of options.phpOptions
+        phpArgs += "-d " + key + "=" + value + " "
+      execBin = "php " + phpArgs
+
+    execBin += composerBin
+
+
     if options.cwd
       execOpts.cwd = options.cwd
     if options.maxBuffer
@@ -32,4 +45,4 @@ module.exports = (grunt) ->
 
     done = this.async()
     cmd += ' --' + arg for arg in args
-    execCmd composerBin + ' ' + cmd, done, execOpts
+    execCmd execBin + ' ' + cmd, done, execOpts
