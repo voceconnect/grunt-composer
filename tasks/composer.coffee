@@ -10,7 +10,7 @@ module.exports = (grunt) ->
   execCmd = (cmd, cb, execOpts) ->
     grunt.verbose.writeln 'Exec: ' + cmd
     exec cmd, execOpts, (error, stdout, stderr) ->
-      grunt.verbose.writeln stdout
+      grunt.log.ok stdout
       if(stderr)
         grunt.fatal stderr
       if(error && error.code == 127)
