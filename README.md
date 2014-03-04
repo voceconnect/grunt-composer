@@ -25,6 +25,12 @@ Default value: `.`
 
 The directory in which to execute the composer command.
 
+#### options.composerLocation
+Type: `String`
+Defaut value: `composer`
+
+The binary to use for composer if not installed globally.
+
 
 ## Running Composer Commands
 
