@@ -1,7 +1,7 @@
 ###
 composer
 @usage:
-    grunt compass:install
+    grunt composer:args...
 ###
 
 module.exports = (grunt) ->
@@ -14,7 +14,7 @@ module.exports = (grunt) ->
       if(stderr)
         grunt.fatal stderr
       if(error && error.code == 127)
-        grunt.warn 'Composer must be installed globally. For more info, ' +
+        grunt.warn 'Composer must be installed globally. Or use the composerLocation config option. For more info, ' +
         'see: https://getcomposer.org/doc/00-intro.md#globally.'
       cb()
 
@@ -22,6 +22,9 @@ module.exports = (grunt) ->
   grunt.registerTask 'composer', desc, (cmd, args...) ->
     options = this.options()
     execOpts = {}
+    composerBin = options.composerLocation
+    if !composerLocation
+      composerBin = 'composer'
     if options.cwd
       execOpts.cwd = options.cwd
     if options.maxBuffer
@@ -29,4 +32,4 @@ module.exports = (grunt) ->
 
     done = this.async()
     cmd += ' --' + arg for arg in args
-    execCmd 'composer ' + cmd, done, execOpts
+    execCmd composerBin + ' ' + cmd, done, execOpts
