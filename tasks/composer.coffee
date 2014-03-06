@@ -5,18 +5,25 @@ composer
 ###
 
 module.exports = (grunt) ->
-  exec = require('child_process').exec
+  exec = require('child_process').spawn
+
+
 
   execCmd = (cmd, cb, execOpts) ->
     grunt.verbose.writeln 'Exec: ' + cmd
-    exec cmd, execOpts, (error, stdout, stderr) ->
+    test = exec 'composer', ['update'], (error, stdout, stderr) ->
       grunt.log.ok stdout
       if(stderr)
         grunt.fatal stderr
       if(error && error.code == 127)
-        grunt.warn 'Composer must be installed globally. Or use the composerLocation config option. For more info, ' +
+        grunt.warn 'Composer must be installed globally.
+Or use the composerLocation config option. For more info, ' +
         'see: https://getcomposer.org/doc/00-intro.md#globally.'
       cb()
+    test.stdout.on('data', (data)->
+      console.log(data.toString());
+    )
+
 
   desc = 'Wrapper for Composer commands'
   grunt.registerTask 'composer', desc, (cmd, args...) ->
