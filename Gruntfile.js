@@ -12,41 +12,37 @@ module.exports = function (grunt) {
 
     // Project configuration.
     grunt.initConfig({
-        jshint: {
-            all: [
-                'Gruntfile.js',
-                'tasks/*.js'
-            ]
-        },
         coffeelint: {
             app: [
                 'tasks/*.coffee',
                 'test/*.coffee'
             ]
         },
-        jasmine: {
-            all: {
-                src: 'test/*Spec.js'
-            }
-        },
-        clean: {
-
-        },
         coffee: {
             tests: {
                 files: {
-                    'test/gruntComposerSpec.js' : 'test/gruntComposerSpec.coffee'
+                    'specs/composerSpec.js' : 'test/composerSpec.coffee',
+                    'specs/composerRunnerSpec.js' : 'test/composerRunnerSpec.coffee'
                 }
             }
+        },
+        jasmine_node: {
+            projectRoot: ".",
+            requirejs: false,
+            forceExit: true,
+            jUnit: {
+                report: false,
+                savePath : "./build/reports/jasmine/",
+                useDotNotation: true,
+                consolidate: true
+            }
         }
-
     });
 
     grunt.loadTasks('tasks');
     grunt.loadNpmTasks('grunt-coffeelint');
     grunt.loadNpmTasks('grunt-contrib-coffee');
-    grunt.loadNpmTasks('grunt-contrib-jasmine');
-
-    grunt.registerTask('test', ['coffee', 'jasmine', 'coffeelint']);
+    grunt.loadNpmTasks('grunt-jasmine-node');
+    grunt.registerTask('test', ['coffee', 'jasmine_node', 'coffeelint']);
 
 };
