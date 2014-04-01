@@ -7,7 +7,7 @@ class ComposerRunner
     else
       composerLocation = 'composer';
     if @config.usePhp
-      return "php #{composerLocation} " + @command + this.getFlags()
+      return "php#{this.getPhpOptions()} #{composerLocation} " + @command + this.getFlags()
     "#{composerLocation} " + @command + this.getFlags()
 
   getFlags: ->
@@ -17,7 +17,15 @@ class ComposerRunner
         @compressedFlags += ' --' + flag
     else
       return ""
-    return @compressedFlags.toString()
+    return @compressedFlags
 
+  getPhpOptions: ->
+    phpOptions = @config.phpArgs
+    if phpOptions
+      compressedOptions = "";
+      for option, value of phpOptions
+        compressedOptions += " -D#{option}=#{value}"
+      return compressedOptions
+    ""
 
 module.exports = ComposerRunner

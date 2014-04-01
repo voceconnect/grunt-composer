@@ -69,5 +69,9 @@ describe 'Composer Runner Module', ->
     @runner = new @ComposerRunner(config, composerCommand)
 
     expect(@runner.getExecCommand()).toBe(
-      "php "
+      "php -DsomeArg=someValue composer install"
     )
+
+  it 'should call childNode.exec with the correct arguments', ->
+    composerCommand = 'someCommand'
+

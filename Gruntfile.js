@@ -22,7 +22,8 @@ module.exports = function (grunt) {
             tests: {
                 files: {
                     'specs/composerSpec.js' : 'test/composerSpec.coffee',
-                    'specs/composerRunnerSpec.js' : 'test/composerRunnerSpec.coffee'
+                    'specs/composerRunnerSpec.js' : 'test/composerRunnerSpec.coffee',
+                    'ComposerRunner.js' : 'tasks/lib/ComposerRunner.coffee'
                 }
             }
         },
@@ -36,6 +37,21 @@ module.exports = function (grunt) {
                 useDotNotation: true,
                 consolidate: true
             }
+        },
+        watch : {
+            files: [
+                '**/**/*.coffee'
+            ],
+            tasks: ['coffee', 'jasmine_node', 'coffeelint']
+        },
+        composer : {
+            options : {
+                usePhp: true,
+                phpArgs: {
+                    someArg: 'custom'
+                },
+                composerLocation: 'customThing'
+            }
         }
     });
 
@@ -43,6 +59,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-coffeelint');
     grunt.loadNpmTasks('grunt-contrib-coffee');
     grunt.loadNpmTasks('grunt-jasmine-node');
+    grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.registerTask('test', ['coffee', 'jasmine_node', 'coffeelint']);
 
 };
