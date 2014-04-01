@@ -8,8 +8,11 @@ module.exports = (grunt) ->
   grunt.registerTask(
     'composer',
     'Wrapper around Composer commands',
-    (command, flags...) ->
-      ComposerRunner = require('./lib/ComposerRunner')
-      composerRunnerObj = new ComposerRunner(this.options(), command, flags)
-      console.log composerRunnerObj.getExecCommand()
+    exports.handleTask
   )
+
+
+exports.handleTask = (command, flags) ->
+  ComposerRunner = require('./lib/ComposerRunner')
+  runner = new ComposerRunner(this.options(), command, flags)
+  console.log(runner.getExecCommand())

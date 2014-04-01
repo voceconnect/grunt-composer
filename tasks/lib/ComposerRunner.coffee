@@ -15,9 +15,8 @@ class ComposerRunner
       @compressedFlags = "";
       for flag in @flags
         @compressedFlags += ' --' + flag
-    else
-      return ""
-    return @compressedFlags
+      return @compressedFlags
+    ""
 
   getPhpOptions: ->
     phpOptions = @config.phpArgs
