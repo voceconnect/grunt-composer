@@ -35,7 +35,8 @@
     "grunt-contrib-jasmine": "~0.6.1",
     "grunt-contrib-coffee": "~0.10.1",
     "grunt-jasmine-node": "~0.1.0",
-    "grunt-contrib-watch": "~0.6.1"
+    "grunt-contrib-watch": "~0.6.1",
+    "mockery": "~1.4.0"
   },
   "peerDependencies": {
     "grunt": "~0.4.0"
@@ -43,5 +44,4 @@
   "files": [
     "tasks/composer.coffee"
   ]
-
 }
