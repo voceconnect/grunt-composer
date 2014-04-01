@@ -1,12 +1,13 @@
 describe 'Grunt Composer', ->
 
   beforeEach ->
-    @composer = require '../tasks/composer'
-    @grunt = require 'grunt'
     @mockery = require 'mockery'
-    @mockery.enable()
 
     @mockComposerRunner = getMockComposer()
+    @composer = require '../tasks/composer'
+    @grunt = require 'grunt'
+    @mockery.enable()
+
 
   afterEach ->
     @mockery.disable()
@@ -21,10 +22,23 @@ describe 'Grunt Composer', ->
     )
 
   it 'should call getExecCommand on composerRunner module', ->
-    @mockery.registerMock('./lib/composerRunner')
+    @mockery.registerMock('./lib/ComposerRunner', @mockComposerRunner)
+    expectedCommand = 'some command'
+    expectedFlags = ['some flag']
+
+    mockGruntFunction = getMockGruntFunction()
+    @composer.handleTask(mockGruntFunction, expectedCommand, expectedFlags)
+
+    expect(@mockComposerRunner).toHaveBeenCalledWith(
+      some: 'mock',
+      expectedCommand, expectedFlags
+    )
 
   getMockComposer = ->
     mock = jasmine.createSpy()
-    mock.getExecCommand = jasmine.createSpy()
+    mock.prototype.getExecCommand = jasmine.createSpy()
     return mock
+
+  getMockGruntFunction = ->
+    options: jasmine.createSpy().andReturn(some: 'mock')
 
