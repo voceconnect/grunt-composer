@@ -22,7 +22,7 @@ describe 'Grunt Composer', ->
     )
 
   it 'should call getExecCommand on composerRunner module', ->
-    @mockery.registerMock('./lib/ComposerRunner', @mockComposerRunner)
+    @mockery.registerMock('./lib/commandBuilder', @mockComposerRunner)
     expectedCommand = 'some command'
     expectedFlags = ['some flag']
 

@@ -1,4 +1,4 @@
-class ComposerRunner
+class CommandBuilder
   constructor: (@config, @command, @flags) ->
 
   getExecCommand: ->
@@ -27,4 +27,4 @@ class ComposerRunner
       return compressedOptions
     ""
 
-module.exports = ComposerRunner
+module.exports = CommandBuilder

@@ -13,6 +13,6 @@ module.exports = (grunt) ->
   )
 
 module.exports.handleTask = (self, command, flags) ->
-  ComposerRunner = require('./lib/ComposerRunner')
+  ComposerRunner = require('./lib/commandBuilder')
   runner = new ComposerRunner(self.options(), command, flags)
   console.log(runner.getExecCommand())
