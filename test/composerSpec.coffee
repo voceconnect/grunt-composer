@@ -20,19 +20,19 @@ describe 'Grunt Composer', ->
       'Wrapper around Composer commands',
       jasmine.any(Function)
     )
-
-  it 'should call getExecCommand on composerRunner module', ->
-    @mockery.registerMock('./lib/commandBuilder', @mockComposerRunner)
-    expectedCommand = 'some command'
-    expectedFlags = ['some flag']
-
-    mockGruntFunction = getMockGruntFunction()
-    @composer.handleTask(mockGruntFunction, expectedCommand, expectedFlags)
-
-    expect(@mockComposerRunner).toHaveBeenCalledWith(
-      some: 'mock',
-      expectedCommand, expectedFlags
-    )
+#
+#  it 'should call getExecCommand on composerRunner module', ->
+#    @mockery.registerMock('./lib/commandBuilder', @mockComposerRunner)
+#    expectedCommand = 'some command'
+#    expectedFlags = ['some flag']
+#
+#    mockGruntFunction = getMockGruntFunction()
+#    @composer.handleTask(mockGruntFunction, expectedCommand, expectedFlags)
+#
+#    expect(@mockComposerRunner).toHaveBeenCalledWith(
+#      some: 'mock',
+#      expectedCommand, expectedFlags
+#    )
 
   getMockComposer = ->
     mock = jasmine.createSpy()
