@@ -13,10 +13,13 @@ module.exports = (grunt) ->
   )
 
 module.exports.handleTask = (self, command, flags) ->
+  require('shelljs/global')
   commandBuilder = require('./lib/commandBuilder')
-  runner = commandBuilder
+  commandToRun = commandBuilder
   .withConfig(self.options())
   .withFlags(flags)
   .withCommand(command)
   .build()
-  console.log(runner.getExecCommand())
+
+  exec(commandToRun)
+
