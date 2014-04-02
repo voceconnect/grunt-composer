@@ -1,30 +1,38 @@
-class CommandBuilder
-  constructor: (@config, @command, @flags) ->
+exports.build = ->
+  if @config.composerLocation
+    composerLocation = @config.composerLocation
+  else
+    composerLocation = 'composer';
+  if @config.usePhp
+    return "php#{this.getPhpOptions()} #{composerLocation} " + @command + this.getFlags()
+  "#{composerLocation} " + @command + this.getFlags()
 
-  getExecCommand: ->
-    if @config.composerLocation
-      composerLocation = @config.composerLocation
-    else
-      composerLocation = 'composer';
-    if @config.usePhp
-      return "php#{this.getPhpOptions()} #{composerLocation} " + @command + this.getFlags()
-    "#{composerLocation} " + @command + this.getFlags()
+exports.getFlags = ->
+  if @flags
+    @compressedFlags = "";
+    for flag in @flags
+      @compressedFlags += ' --' + flag
+    return @compressedFlags
+  ""
 
-  getFlags: ->
-    if @flags
-      @compressedFlags = "";
-      for flag in @flags
-        @compressedFlags += ' --' + flag
-      return @compressedFlags
-    ""
+exports.getPhpOptions = ->
+  phpOptions = @config.phpArgs
+  if phpOptions
+    compressedOptions = "";
+    for option, value of phpOptions
+      compressedOptions += " -D#{option}=#{value}"
+    return compressedOptions
+  ""
 
-  getPhpOptions: ->
-    phpOptions = @config.phpArgs
-    if phpOptions
-      compressedOptions = "";
-      for option, value of phpOptions
-        compressedOptions += " -D#{option}=#{value}"
-      return compressedOptions
-    ""
+exports.withConfig = (config) ->
+  @config = config
+  this
 
-module.exports = CommandBuilder
+exports.withFlags = (flags) ->
+  @flags = flags
+  this
+
+exports.withCommand = (command) ->
+  @command = command
+  this
+
