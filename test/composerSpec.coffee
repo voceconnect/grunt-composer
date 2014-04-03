@@ -5,6 +5,7 @@ describe 'Grunt Composer', ->
 
     @composer = require '../tasks/composer'
     @grunt = require 'grunt'
+    @mockGruntFunction = @getMockGruntFunction();
     @mockery.enable()
 
 
@@ -19,7 +20,3 @@ describe 'Grunt Composer', ->
       'Wrapper around Composer commands',
       jasmine.any(Function)
     )
-
-  it 'calls spawn on childprocess with correct commands', ->
-    @mockery.registerMock('')
-

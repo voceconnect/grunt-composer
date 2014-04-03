@@ -22,7 +22,8 @@ module.exports = function (grunt) {
             tests: {
                 files: {
                     'specs/composerSpec.js' : 'test/composerSpec.coffee',
-                    'specs/commandBuilderSpec.js' : 'test/commandBuilderSpec.coffee'
+                    'specs/commandBuilderSpec.js' : 'test/commandBuilderSpec.coffee',
+                    'specs/commandBuilder.js': 'tasks/lib/commandBuilder.coffee'
                 }
             }
         },
