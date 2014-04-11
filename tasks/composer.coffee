@@ -21,5 +21,5 @@ module.exports.handleTask = (self, command, flags) ->
   .withCommand(command)
   .build()
 
-  return exec(commandToRun).code == 0
+  exec(commandToRun).code == 0
 
