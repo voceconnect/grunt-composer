@@ -5,7 +5,6 @@ describe 'Grunt Composer', ->
 
     @composer = require '../tasks/composer'
     @grunt = require 'grunt'
-    @mockGruntFunction = @getMockGruntFunction();
     @mockery.enable()
 
 
