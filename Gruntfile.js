@@ -38,11 +38,7 @@ module.exports = function (grunt) {
         },
         composer : {
             options : {
-                usePhp: true,
-                phpArgs: {
-                    someArg: 'custom'
-                },
-                composerLocation: 'customThing'
+                cwd: 'test/integration'
             }
         }
     });
