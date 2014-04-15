@@ -27,6 +27,7 @@ grunt.initConfig({
             phpArgs: {
                 someArg: 'custom'
             },
+            cwd: 'packages/build'
             composerLocation: '/usr/bin/composer'
         }
     }
@@ -57,7 +58,7 @@ Defaut value: `composer`
 
 The binary to use for composer if not installed globally.
 
-If `options.cwd` is present, `options.composerLocation` is relative to that directory.
+If `options.cwd` is present, relative paths for `options.coposerLocation` are relative to that directory.
 
 ## Running Composer Commands
 
