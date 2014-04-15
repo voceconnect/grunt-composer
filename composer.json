@@ -1,0 +1,13 @@
+{
+    "name": "voce/grunt-composer",
+    "description": "Tests for grunt-composer",
+    "authors": [
+        {
+            "name": "Michael Pretty",
+            "email": "mpretty@voceconnect.com"
+        }
+    ],
+    "config": {
+        "vendor-dir": "tmp"
+    }
+}
