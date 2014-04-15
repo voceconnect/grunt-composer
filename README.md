@@ -46,12 +46,18 @@ Type: `Object`
 
 This is an object which you should use to send -D arguments to the php binary.
 
+#### options.cwd
+Type: String
+
+This is the working directory, normally where the composer.json is located.
+
 #### options.composerLocation
 Type: `String`
 Defaut value: `composer`
 
 The binary to use for composer if not installed globally.
 
+If `options.cwd` is present, `options.composerLocation` is relative to that directory.
 
 ## Running Composer Commands
 
