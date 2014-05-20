@@ -2,10 +2,6 @@
 
 var grunt = require('grunt');
 
-function getNormalizedFile(filepath) {
-  return grunt.util.normalizelf(grunt.file.read(filepath));
-}
-
 exports.composer = {
 	install_test: function(test) {
 		test.expect(1);
