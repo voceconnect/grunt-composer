@@ -8,34 +8,46 @@
 
 'use strict';
 
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
-  // Project configuration.
-  grunt.initConfig({
-    jshint: {
-      all: [
-        'Gruntfile.js',
-        'tasks/*.js'
-      ]
-    },
-    coffeelint: {
-      app: ['tasks/*.coffee']
-    },
-    clean: {
-      tests: ['test/tmp', 'test/composer.lock']
-    },
-    nodeunit: {
-      tests: ['test/*_test.js']
-    }
-  });
+    // Project configuration.
+    grunt.initConfig({
+        coffeelint: {
+            app: [
+                'tasks/*.coffee',
+                'test/*.coffee'
+            ]
+        },
+        coffee: {
+            tests: {
+                files: {
+                    'specs/composerSpec.js' : 'test/composerSpec.coffee',
+                    'specs/commandBuilderSpec.js' : 'test/commandBuilderSpec.coffee',
+                    'specs/commandBuilder.js': 'tasks/lib/commandBuilder.coffee'
+                }
+            }
+        },
+        jasmine_node: {
+            projectRoot: "."
+        },
+        watch : {
+            files: [
+                '**/**/*.coffee'
+            ],
+            tasks: ['coffee', 'jasmine_node', 'coffeelint']
+        },
+        composer : {
+            options : {
+                cwd: 'test/integration'
+            }
+        }
+    });
 
-  grunt.loadTasks('tasks');
-
-  grunt.loadNpmTasks('grunt-coffeelint');
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-nodeunit');
-
-  grunt.registerTask('default', ['coffeelint']);
-  grunt.registerTask('test', ['clean', 'composer:install:working-dir=test/', 'nodeunit']);
+    grunt.loadTasks('tasks');
+    grunt.loadNpmTasks('grunt-coffeelint');
+    grunt.loadNpmTasks('grunt-contrib-coffee');
+    grunt.loadNpmTasks('grunt-jasmine-node');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.registerTask('test', ['coffee', 'jasmine_node', 'coffeelint']);
 
 };

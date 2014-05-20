@@ -1,9 +1,9 @@
 {
   "name": "grunt-composer",
-  "version": "0.2.0",
+  "version": "0.3.1",
   "description": "A grunt wrapper for composer",
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt test; grunt composer:update"
   },
   "repository": {
     "type": "git",
@@ -14,9 +14,9 @@
     "composer"
   ],
   "author": {
-        "name": "Michael Pretty (prettyboymp)",
-        "email": "mpretty@voceconnect.com"
-    },
+    "name": "Michael Pretty (prettyboymp)",
+    "email": "mpretty@voceconnect.com"
+  },
   "licenses": [
     {
       "type": "MIT",
@@ -30,22 +30,22 @@
     "node": ">= 0.8.0"
   },
   "devDependencies": {
-    "grunt-contrib-coffee": "0.6.x",
-    "grunt-coffeelint": "0.0.6"
+    "grunt-coffeelint": "latest",
+    "grunt": "~0.4.0",
+    "grunt-contrib-jasmine": "~0.6.1",
+    "grunt-contrib-coffee": "~0.10.1",
+    "grunt-jasmine-node": "~0.1.0",
+    "grunt-contrib-watch": "~0.6.1",
+    "mockery": "~1.4.0"
   },
   "peerDependencies": {
     "grunt": "~0.4.0"
   },
-  "devDependencies": {
-    "grunt-contrib-nodeunit": "~0.1.2",
-    "grunt-contrib-clean": "~0.4.0",
-    "grunt-coffeelint": "latest",
-    "grunt": "~0.4.0"
-  },
   "files": [
-    "tasks/composer.coffee"
+    "tasks/composer.coffee",
+    "tasks/lib/commandBuilder.coffee"
   ],
-  "scripts": {
-    "test": "grunt test"
+  "dependencies": {
+    "shelljs": "~0.2.6"
   }
 }

@@ -17,14 +17,48 @@ Loading the plugin via JavaScript:
 grunt.loadNpmTasks('grunt-composer');
 ```
 
+Then you should use the `grunt.initConfig()` function inside your Gruntfile like below:
+
+```js
+grunt.initConfig({
+    composer : {
+        options : {
+            usePhp: true,
+            phpArgs: {
+                someArg: 'custom'
+            },
+            cwd: 'packages/build'
+            composerLocation: '/usr/bin/composer'
+        }
+    }
+})
+
+```
 ### Options
 
+#### options.usePhp
+Type: `Boolean`
+Default value: `false`
+
+This tells the plugin to execute `php #{composerLocation}`
+
+#### options.phpArgs
+Type: `Object`
+
+This is an object which you should use to send -D arguments to the php binary.
+
 #### options.cwd
+Type: String
+
+This is the working directory, normally where the composer.json is located.
+
+#### options.composerLocation
 Type: `String`
-Default value: `.`
+Defaut value: `composer`
 
-The directory in which to execute the composer command.
+The binary to use for composer if not installed globally.
 
+If `options.cwd` is present, relative paths for `options.coposerLocation` are relative to that directory.
 
 ## Running Composer Commands
 

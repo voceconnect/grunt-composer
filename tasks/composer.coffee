@@ -1,32 +1,29 @@
 ###
 composer
 @usage:
-    grunt compass:install
+    grunt composer:args...
 ###
 
 module.exports = (grunt) ->
-  exec = require('child_process').exec
+  grunt.registerTask(
+    'composer',
+    'Wrapper around Composer commands',
+    (command, flags...) ->
+      module.exports.handleTask(this, command, flags)
+  )
 
-  execCmd = (cmd, cb, execOpts) ->
-    grunt.verbose.writeln 'Exec: ' + cmd
-    exec cmd, execOpts, (error, stdout, stderr) ->
-      grunt.verbose.writeln stdout
-      if(stderr)
-        grunt.fatal stderr
-      if(error && error.code == 127)
-        grunt.warn 'Composer must be installed globally. For more info, ' +
-        'see: https://getcomposer.org/doc/00-intro.md#globally.'
-      cb()
+module.exports.handleTask = (self, command, flags) ->
+  require('shelljs/global')
+  commandBuilder = require('./lib/commandBuilder')
+  commandToRun = commandBuilder
+  .withConfig(self.options())
+  .withFlags(flags)
+  .withCommand(command)
+  .build()
 
-  desc = 'Wrapper for Composer commands'
-  grunt.registerTask 'composer', desc, (cmd, args...) ->
-    options = this.options()
-    execOpts = {}
-    if options.cwd
-      execOpts.cwd = options.cwd
-    if options.maxBuffer
-      execOpts.maxBuffer = options.maxBuffer
+  cwd = self.options().cwd
+  if cwd
+    cd(cwd)
 
-    done = this.async()
-    cmd += ' --' + arg for arg in args
-    execCmd 'composer ' + cmd, done, execOpts
+  exec(commandToRun).code == 0
+
