@@ -13,10 +13,7 @@ module.exports = (grunt) ->
       grunt.verbose.writeln stdout
       if(stderr)
         grunt.fatal stderr
-      if(error && error.code == 127)
-        grunt.warn 'Composer must be installed globally. For more info, ' +
-        'see: https://getcomposer.org/doc/00-intro.md#globally.'
-      cb()
+      cb(error)
 
   desc = 'Wrapper for Composer commands'
   grunt.registerTask 'composer', desc, (cmd, args...) ->
