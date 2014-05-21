@@ -1,13 +1,13 @@
 {
   "name": "grunt-composer",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A grunt wrapper for composer",
   "scripts": {
     "test": "grunt test"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/voceconnect/grunt-composer.git"
+    "url": "git://github.com/joerx/grunt-composer.git"
   },
   "keywords": [
     "gruntplugin",
@@ -24,7 +24,7 @@
     }
   ],
   "bugs": {
-    "url": "https://github.com/voceconnect/grunt-composer/issues"
+    "url": "https://github.com/joerx/grunt-composer/issues"
   },
   "engines": {
     "node": ">= 0.8.0"
