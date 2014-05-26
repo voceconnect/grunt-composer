@@ -27,7 +27,7 @@ grunt.initConfig({
             phpArgs: {
                 someArg: 'custom'
             },
-            cwd: 'packages/build'
+            cwd: 'packages/build',
             composerLocation: '/usr/bin/composer'
         }
     }
