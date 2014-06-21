@@ -25,12 +25,15 @@ exports.reset = ->
   @config = null
 
 exports._getFlags = ->
+  @compressedFlags = ""
   if @flags
-    @compressedFlags = "";
     for flag in @flags
       @compressedFlags += ' --' + flag
     return @compressedFlags
-  ""
+  else if @config.flags
+    for flag in @config.flags
+      @compressedFlags += ' --' + flag
+    return @compressedFlags
 
 exports._getPhpOptions = ->
   phpOptions = @config.phpArgs
