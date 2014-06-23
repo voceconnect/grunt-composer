@@ -91,3 +91,18 @@ describe 'Composer Command Builder Module', ->
     expect(builtCommand).toBe(
       "php -DsomeArg=someValue composer install"
     )
+    
+  it 'should set composer arguments correctly', ->
+    composerCommand = 'install'
+    config =
+      usePhp: true,
+      flags: ['no-dev', 'optimize-autoloader']
+
+    builtCommand = @commandBuilder
+    .withConfig(config)
+    .withCommand(composerCommand)
+    .build()
+
+    expect(builtCommand).toBe(
+      "php composer install --no-dev --optimize-autoloader"
+    )

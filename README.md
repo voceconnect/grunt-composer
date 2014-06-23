@@ -27,6 +27,7 @@ grunt.initConfig({
             phpArgs: {
                 someArg: 'custom'
             },
+            flags: ['arg'],
             cwd: 'packages/build',
             composerLocation: '/usr/bin/composer'
         }
@@ -41,6 +42,12 @@ Type: `Boolean`
 Default value: `false`
 
 This tells the plugin to execute `php #{composerLocation}`
+
+#### options.flags
+Type: `Array`
+
+This is an array of custom Composer CLI args, such as `no-dev`.  
+_Note_: This is bypassed if there are command options.
 
 #### options.phpArgs
 Type: `Object`
