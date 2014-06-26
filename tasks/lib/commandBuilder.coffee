@@ -26,7 +26,7 @@ exports.reset = ->
 
 exports._getFlags = ->
   @compressedFlags = ""
-  if @flags
+  if @flags && @flags.length > 0
     for flag in @flags
       @compressedFlags += ' --' + flag
     return @compressedFlags
