@@ -37,8 +37,10 @@ module.exports = function (grunt) {
             tasks: ['coffee', 'jasmine_node', 'coffeelint']
         },
         composer : {
-            options : {
-                cwd: 'test/integration'
+            self: {
+                options : {
+                    cwd: 'test/integration'
+                }
             }
         }
     });
