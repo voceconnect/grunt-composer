@@ -29,11 +29,10 @@ exports._getFlags = ->
   if @flags && @flags.length > 0
     for flag in @flags
       @compressedFlags += ' --' + flag
-    return @compressedFlags
   else if @config.flags
     for flag in @config.flags
       @compressedFlags += ' --' + flag
-    return @compressedFlags
+  return @compressedFlags
 
 exports._getPhpOptions = ->
   phpOptions = @config.phpArgs
