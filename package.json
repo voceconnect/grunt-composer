@@ -3,7 +3,7 @@
   "version": "0.3.1",
   "description": "A grunt wrapper for composer",
   "scripts": {
-    "test": "grunt test; grunt composer:update"
+    "test": "grunt test; grunt composer:self:update"
   },
   "repository": {
     "type": "git",
