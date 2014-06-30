@@ -4,7 +4,8 @@ exports.build = ->
   else
     composerLocation = 'composer';
   if @config.usePhp
-    return "php#{this._getPhpOptions()} #{composerLocation} " + @command + this._getFlags()
+    return "php#{this._getPhpOptions()} #{composerLocation} " +
+    @command + this._getFlags()
   "#{composerLocation} " + @command + this._getFlags()
 
 exports.withConfig = (config) ->
@@ -26,19 +27,18 @@ exports.reset = ->
 
 exports._getFlags = ->
   @compressedFlags = ""
-  if @flags
+  if @flags && @flags.length > 0
     for flag in @flags
       @compressedFlags += ' --' + flag
-    return @compressedFlags
   else if @config.flags
     for flag in @config.flags
       @compressedFlags += ' --' + flag
-    return @compressedFlags
+  return @compressedFlags
 
 exports._getPhpOptions = ->
   phpOptions = @config.phpArgs
   if phpOptions
-    compressedOptions = "";
+    compressedOptions = ""
     for option, value of phpOptions
       compressedOptions += " -D#{option}=#{value}"
     return compressedOptions
