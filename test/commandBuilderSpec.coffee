@@ -89,7 +89,7 @@ describe 'Composer Command Builder Module', ->
     .build()
 
     expect(builtCommand).toBe(
-      "php -DsomeArg=someValue composer install"
+      "php -dsomeArg=someValue composer install"
     )
     
   it 'should set composer arguments correctly', ->

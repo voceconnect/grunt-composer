@@ -40,6 +40,6 @@ exports._getPhpOptions = ->
   if phpOptions
     compressedOptions = ""
     for option, value of phpOptions
-      compressedOptions += " -D#{option}=#{value}"
+      compressedOptions += " -d#{option}=#{value}"
     return compressedOptions
   ""
