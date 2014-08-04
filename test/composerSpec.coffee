@@ -12,9 +12,9 @@ describe 'Grunt Composer', ->
     @mockery.disable()
 
   it 'sets up a registerTask on Grunt', ->
-    spyOn(@grunt, 'registerTask')
+    spyOn(@grunt, 'registerMultiTask')
     @composer @grunt
-    expect(@grunt.registerTask).toHaveBeenCalledWith(
+    expect(@grunt.registerMultiTask).toHaveBeenCalledWith(
       'composer',
       'Wrapper around Composer commands',
       jasmine.any(Function)
