@@ -29,8 +29,13 @@ module.exports.handleTask = (self, command, flags) ->
   .withCommand(command)
   .build()
 
+  cur_cwd = process.cwd()
   cwd = self.options().cwd
+
   if cwd
     cd(cwd)
 
   exec(commandToRun).code == 0
+
+  if cwd
+    cd(cur_cwd)
