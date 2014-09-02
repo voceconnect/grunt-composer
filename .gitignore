@@ -1,5 +1,6 @@
-node_modules
 .DS_Store
+*.iml
+node_modules
+specs
 test/tmp/
 test/composer.lock
-*.iml
