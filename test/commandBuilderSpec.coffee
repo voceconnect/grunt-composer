@@ -44,22 +44,22 @@ describe 'Composer Command Builder Module', ->
       "#{composerLocation} #{composerCommand}"
     )
 
-  it 'should prefix with php when composerLocation' +
-      'set in config and usePHP enabled', ->
-        composerLocation = '/heres/some/phar'
-        composerCommand = 'update'
-        config =
-          composerLocation: composerLocation
-          usePhp: true
+  it 'should prefix with php when composerLocation \
+    set in config and usePHP enabled', ->
+    composerLocation = '/heres/some/phar'
+    composerCommand = 'update'
+    config =
+      composerLocation: composerLocation
+      usePhp: true
 
-        builtCommand = @commandBuilder
-        .withConfig(config)
-        .withCommand(composerCommand)
-        .build()
+    builtCommand = @commandBuilder
+    .withConfig(config)
+    .withCommand(composerCommand)
+    .build()
 
-        expect(builtCommand).toBe(
-          "php #{composerLocation} #{composerCommand}"
-        )
+    expect(builtCommand).toBe(
+      "php #{composerLocation} #{composerCommand}"
+    )
 
   it 'should ammend the correct flags to composer command', ->
     composerCommand = 'update'
