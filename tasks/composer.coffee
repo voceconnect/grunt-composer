@@ -35,7 +35,9 @@ module.exports.handleTask = (self, command, flags) ->
   if cwd
     cd(cwd)
 
-  exec(commandToRun).code == 0
+  result = exec(commandToRun).code == 0
 
   if cwd
     cd(cur_cwd)
+
+  result
