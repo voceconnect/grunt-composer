@@ -91,6 +91,10 @@ grunt.initConfig({
             composerLocation: '/usr/bin/composer'
         },
         some_target: {
+            options : {
+                flags: ['arg'],
+                cwd: 'packages/build'
+            }
         }
     }
 })
